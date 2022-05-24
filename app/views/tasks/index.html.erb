@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="text-center">My Tasks</h1>
+  <%= link_to "Create a new task", new_task_path, class:"d-flex justify-content-center"%>
+  <ul class="list-group d-flex mt-2 mx-auto w-25 justify-content-center">
+    <% @tasks.each do |task|%>
+      <li class="list-group-item p-3 d-flex align-items-center justify-content-between">
+        <div class="group">
+          <input type="checkbox">
+          <%= link_to task.title, task_path(task) %>
+        </div>
+        <%= link_to raw('<i class="fas fa-trash-alt"></i>'), delete_task_path(task), method: :delete, data: {confirm: "Are you sure?"}  %>
+      </li>
+    <% end %>
+  </ul>
+</div>
